@@ -1,8 +1,10 @@
 # SmartSkin-Diagnosis
+
 # North South University
+# Faculty: Mr. Muhammad Shafayat Oshman [MUO]
 Project for CSE299: SmartSkin Diagnosis (Skin Disease Detection using CNN).
 
-# Faculty: Mr. Muhammad Shafayat Oshman [MUO]
+
 
 SmartSkin Diagnosis
 SmartSkin Diagnosis is an intelligent tool designed to analyze skin images and assist in diagnosing skin conditions with high accuracy.
