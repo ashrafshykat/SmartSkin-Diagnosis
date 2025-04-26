@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nutrition Deficiency Detection</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+</head>
+<body>
+    <div class="container mt-5" style="max-width: 600px;">
+        <h1 class="text-center header-title">Nutrition Deficiency Detection</h1>
+
+        <h2 class="text-center mt-5">Upload an Image</h2>
+        <div class="text-center">
+            <form action="{% url 'upload' %}" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="file" name="image" class="form-control-file" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Upload</button>
+            </form>
+        </div>
+
+        <h2 class="text-center mt-5">Analyze from URL</h2>
+        <div class="text-center">
+            <form action="{% url 'analyze' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="url" name="image_url" class="form-control" placeholder="Enter image URL" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Analyze</button>
+            </form>
+        </div>
+
+        <h2 class="text-center mt-5">Real-Time Detection</h2>
+        <div class="text-center">
+            <a href="{% url 'realtime' %}" class="btn btn-primary">Use Webcam</a>
+        </div>
+    </div>
+</body>
+</html>

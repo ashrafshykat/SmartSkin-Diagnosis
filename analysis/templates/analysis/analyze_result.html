@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyzed Reports</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+</head>
+
+<body>
+    <div>
+        <center>
+            <h2>Prediction Result: </h2>
+            <p id="prediction-text">{{ prediction }}</p>
+            <script>
+                const diseaseInfo = {
+                    
+                }
+
+
+                const prediction = document.getElementById('prediction-text').innerText = "{{ prediction }}";
+                
+
+
+
+                {% comment %} if (prediction === 'Acne and Rosacea') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Atopic Dermatitis') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Cellulitis Impetigo and other Bacterial Infections') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Eczema') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Herpes HPV and other STDs') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Light Diseases and Disorders of Pigmentation') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Exanthems and Drug Eruptions') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Lupus and other Connective Tissue diseases') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Melanoma Skin Cancer Nevi and Moles') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Poison Ivy Photos and other Contact Dermatitis') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Psoriasis pictures Lichen Planus and related diseases') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Seborrheic Keratoses and other Benign Tumors') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Systemic Disease') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Tinea Ringworm Candidiasis and other Fungal Infections') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Urticaria Hives') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Vascular Tumors') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Vasculitis') {
+                    document.getElementById('prediction-text').style.color = "red";
+                }
+                else if (prediction === 'Warts Molluscum and other Viral Infections') {
+                    document.getElementById('prediction-text').style.color = "red";
+                } {% endcomment %}
+            </script>
+        </center>
+    </div>
+</body>
+
+</html>

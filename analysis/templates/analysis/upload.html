@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+</head>
+<body>
+    <div class="container mt-5" style="max-width: 600px;">
+        <h1 class="text-center header-title">Skin Disease Prediction Result</h1>
+
+        <div id="prediction-result" class="text-center mt-5">
+            {% if predicted_label %}
+                <h3>Prediction Result: </h3>
+                <p><strong>{{ predicted_label }}</strong></p>
+            {% else %}
+                <p>No prediction yet. Please upload an image.</p>
+            {% endif %}
+        </div>
+
+        <h2 class="text-center mt-5">Real-Time Detection</h2>
+        <div class="text-center">
+            <a href="{% url 'realtime' %}" class="btn btn-primary">Use Webcam</a>
+        </div>
+    </div>
+
+    <script>
+        {% if prediction_error %}
+        alert("Error: {{ error_message }}");
+        {% endif %}
+    </script>
+</body>
+</html>
