@@ -15,7 +15,6 @@ It leverages deep learning and image processing to provide quick, reliable resul
 🌍 User-friendly interface for easy accessibility.
 
 
-🚀 Usage
 # Run the application
 python manage.py runserver
 
