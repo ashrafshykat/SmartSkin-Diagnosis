@@ -20,6 +20,7 @@ It leverages deep learning and image processing to provide quick, reliable resul
 
 # Run the application
 python manage.py runserver
-
+Then goto this link:
+http://127.0.0.1:8000/
 
 
