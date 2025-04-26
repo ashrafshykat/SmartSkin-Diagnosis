@@ -1,0 +1,45 @@
+# ========================================
+# General Settings
+# ========================================
+# Normalize text files to LF endings
+* text=auto
+
+# ========================================
+# Python Files
+# ========================================
+*.py text eol=lf
+
+# Django settings files (if any)
+*.html text eol=lf
+*.css text eol=lf
+*.js text eol=lf
+
+# ========================================
+# Jupyter Notebooks
+# ========================================
+*.ipynb text eol=lf
+
+# ========================================
+# Images
+# ========================================
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg text
+
+# ========================================
+# Environment files
+# ========================================
+*.env text eol=lf
+
+# ========================================
+# Database files
+# ========================================
+*.sqlite3 binary
+
+# ========================================
+# Misc
+# ========================================
+*.md text eol=lf
+*.txt text eol=lf
