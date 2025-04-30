@@ -25,7 +25,6 @@ class_names = [
     'Warts Molluscum and other Viral Infections'
 ]
 
-# Load the trained model
 cnn_model = tf.keras.models.load_model('model_latest.h5') 
 
 def preprocess_image(image):

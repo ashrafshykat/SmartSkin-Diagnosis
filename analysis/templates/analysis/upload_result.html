@@ -13,100 +13,121 @@
 <body>
     <div>
         <center>
-            <h2>Prediction Result: </h2>
-            <p id="prediction-text">{{ prediction }}</p>
-            <script>
-                const prediction = document.getElementById('prediction-text').innerText = "{{ prediction }}";
-                if (prediction === 'Acne and Rosacea') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Atopic Dermatitis') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Cellulitis Impetigo and other Bacterial Infections') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Eczema') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Herpes HPV and other STDs') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Light Diseases and Disorders of Pigmentation') {
-                    document.getElementById('prediction-text').style.color = "red";
-                    // Agentic AI section
-                    // Describe the condition
-                    let description = "";
-                    let treatment = "";
-                    let doctorsInfo = "You can find skin doctors in Bangladesh at major hospitals and clinics. For a comprehensive list, visit: <a href='https://www.doctorbangladesh.com/dermatologist/' target='_blank'>Doctor Bangladesh - Dermatologists</a>";
-
-                    switch (prediction) {
-                        case 'Acne and Rosacea':
-                            description = "Acne and Rosacea are common skin conditions causing redness, pimples, and irritation.";
-                            treatment = "Primary treatment includes gentle cleansing, topical creams, and avoiding triggers. Consult a dermatologist for persistent cases.";
-                            break;
-                        case 'Eczema':
-                            description = "Eczema is a condition that makes your skin red and itchy.";
-                            treatment = "Use moisturizers, avoid harsh soaps, and apply prescribed creams. Seek medical advice for severe symptoms.";
-                            break;
-                        // Add more cases as needed for other predictions
-                        default:
-                            description = "Information about this condition is not available.";
-                            treatment = "Please consult a dermatologist for advice.";
+            <center>
+                <h2>Prediction Result: </h2>
+                <h3 id="prediction-text">{{ prediction }}</h3>
+                <p id="cause-text" style="font-weight: bold;"></p>
+                <p id="action-text" style="font-weight: bold;"></p>
+                <p id="prevention-text" style="font-weight: bold;"></p>
+                <script>
+                    
+                    const prediction = document.getElementById('prediction-text').innerText = "{{ prediction }}";
+                    const diseaseInfo = {
+                        "Acne and Rosacea": {
+                            cause: "Hormonal imbalance, clogged pores, bacteria, inflammation.",
+                            action: "Consult a dermatologist, avoid oily products, maintain hygiene.",
+                            prevention: "Gentle cleansing, healthy diet, regular skincare."
+                        },
+                        "Actinic Keratosis Basal Cell Carcinoma and other Malignant Lesions": {
+                            cause: "Prolonged sun exposure, UV radiation.",
+                            action: "Seek medical help urgently. Biopsy may be needed.",
+                            prevention: "Use sunscreen, avoid peak sunlight hours, wear protective clothing."
+                        },
+                        "Atopic Dermatitis": {
+                            cause: "Genetics, allergens, skin barrier defects.",
+                            action: "Moisturize skin, avoid allergens, consult dermatologist.",
+                            prevention: "Use gentle soaps, humidify air, avoid irritants."
+                        },
+                        "Cellulitis Impetigo and other Bacterial Infections": {
+                            cause: "Bacterial infection through skin cuts or wounds.",
+                            action: "Seek antibiotics from a healthcare provider.",
+                            prevention: "Keep wounds clean and covered, maintain hygiene."
+                        },
+                        "Eczema": {
+                            cause: "Allergens, irritants, genetics, environmental factors.",
+                            action: "Use moisturizers, anti-inflammatory creams, and avoid triggers.",
+                            prevention: "Avoid known allergens, keep skin hydrated."
+                        },
+                        "Herpes HPV and other STDs": {
+                            cause: "Viral infections transmitted through skin or sexual contact.",
+                            action: "Seek medical evaluation and antiviral medication.",
+                            prevention: "Practice safe sex, maintain hygiene, get vaccinated."
+                        },
+                        "Light Diseases and Disorders of Pigmentation": {
+                            cause: "Sun exposure, genetic conditions, autoimmune issues.",
+                            action: "Use prescribed creams, limit sun exposure.",
+                            prevention: "Sun protection, avoid harsh skin products."
+                        },
+                        "Exanthems and Drug Eruptions": {
+                            cause: "Reaction to medications or viral infections.",
+                            action: "Stop suspected medication and consult a doctor.",
+                            prevention: "Inform doctors of drug allergies, monitor reactions."
+                        },
+                        "Lupus and other Connective Tissue diseases": {
+                            cause: "Autoimmune disorders affecting skin and internal organs.",
+                            action: "Consult a rheumatologist, follow prescribed treatment.",
+                            prevention: "Avoid sunlight, manage stress, follow care plan."
+                        },
+                        "Melanoma Skin Cancer Nevi and Moles": {
+                            cause: "Genetic predisposition, UV exposure.",
+                            action: "Immediate dermatologic consultation, biopsy may be needed.",
+                            prevention: "Routine skin checks, use SPF, avoid tanning."
+                        },
+                        "Poison Ivy Photos and other Contact Dermatitis": {
+                            cause: "Skin contact with irritants like plants, chemicals.",
+                            action: "Wash area, apply topical corticosteroids.",
+                            prevention: "Avoid known irritants, wear protective gear."
+                        },
+                        "Psoriasis pictures Lichen Planus and related diseases": {
+                            cause: "Autoimmune dysfunction triggering skin cell overgrowth.",
+                            action: "Use prescription ointments, phototherapy, consult a doctor.",
+                            prevention: "Manage stress, avoid triggers, follow treatment."
+                        },
+                        "Seborrheic Keratoses and other Benign Tumors": {
+                            cause: "Aging, genetics, unknown factors.",
+                            action: "Usually harmless; remove if irritated or for cosmetic reasons.",
+                            prevention: "Routine skin exams, avoid scratching lesions."
+                        },
+                        "Systemic Disease": {
+                            cause: "Underlying conditions like diabetes, thyroid disorders.",
+                            action: "Address the root medical condition.",
+                            prevention: "Regular health screenings, chronic condition management."
+                        },
+                        "Tinea Ringworm Candidiasis and other Fungal Infections": {
+                            cause: "Fungal overgrowth due to warm, moist conditions.",
+                            action: "Apply antifungal creams, keep area dry.",
+                            prevention: "Avoid damp clothing, maintain hygiene."
+                        },
+                        "Urticaria Hives": {
+                            cause: "Allergic reactions to food, medications, stress.",
+                            action: "Take antihistamines, identify and avoid allergens.",
+                            prevention: "Monitor allergies, reduce stress, keep skin cool."
+                        },
+                        "Vascular Tumors": {
+                            cause: "Abnormal blood vessel growth, sometimes genetic.",
+                            action: "Dermatological evaluation and treatment if symptomatic.",
+                            prevention: "Monitor skin changes, early medical intervention."
+                        },
+                        "Vasculitis": {
+                            cause: "Inflammation of blood vessels due to autoimmune issues.",
+                            action: "Consult specialist, follow treatment plan (often steroids).",
+                            prevention: "Control autoimmune diseases, avoid triggers."
+                        },
+                        "Warts Molluscum and other Viral Infections": {
+                            cause: "Viral skin infections like HPV or molluscum contagiosum.",
+                            action: "Cryotherapy or topical treatments, consult dermatologist.",
+                            prevention: "Avoid skin contact with infected individuals, good hygiene."
+                        }
+                    };
+                    if (diseaseInfo[prediction]) {
+                        document.getElementById('prediction-text').innerText = prediction;
+                        document.getElementById('prediction-text').style.color = "red";
+                        document.getElementById('cause-text').innerText = "Primary Cause: " + diseaseInfo[prediction].cause;
+                        document.getElementById('action-text').innerText = "What To Do: " + diseaseInfo[prediction].action;
+                        document.getElementById('prevention-text').innerText = "Prevention: " + diseaseInfo[prediction].prevention;
                     }
-
-                    // Display agentic AI info
-                    const agenticDiv = document.createElement('div');
-                    agenticDiv.innerHTML = `
-                        <hr>
-                        <h4>AI Assistant</h4>
-                        <p><strong>Description:</strong> ${description}</p>
-                        <p><strong>Primary Treatment:</strong> ${treatment}</p>
-                        <p><strong>Find Skin Doctors in Bangladesh:</strong> ${doctorsInfo}</p>
-                    `;
-                    document.querySelector('center').appendChild(agenticDiv);
-                }
-                else if (prediction === 'Exanthems and Drug Eruptions') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Lupus and other Connective Tissue diseases') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Melanoma Skin Cancer Nevi and Moles') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Poison Ivy Photos and other Contact Dermatitis') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Psoriasis pictures Lichen Planus and related diseases') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Seborrheic Keratoses and other Benign Tumors') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Systemic Disease') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Tinea Ringworm Candidiasis and other Fungal Infections') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Urticaria Hives') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Vascular Tumors') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Vasculitis') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-                else if (prediction === 'Warts Molluscum and other Viral Infections') {
-                    document.getElementById('prediction-text').style.color = "red";
-                }
-            </script>
-        </center>
+                </script>
+            </center>
     </div>
 </body>
 
